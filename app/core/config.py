@@ -8,7 +8,7 @@ class Settings(BaseSettings):
     app_port: int = 9022
 
     # Database
-    database_url: str = "mysql+pymysql://root:root@localhost:3306/clearancehub"
+    database_url: str = "mssql+pyodbc://sa:YourPassword@localhost:1433/clearancehub?driver=ODBC+Driver+18+for+SQL+Server&TrustServerCertificate=yes"
 
     # JWT
     jwt_secret_key: str = "change-me"

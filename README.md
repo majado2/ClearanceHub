@@ -4,7 +4,7 @@ FastAPI backend for Card Issuance & Access Permit system.
 
 ## Stack
 - FastAPI
-- MySQL
+- SQL Server
 - SQLAlchemy + Alembic
 - JWT auth
 
@@ -19,6 +19,11 @@ pip install -r requirements.txt
 
 ```bash
 copy .env.example .env
+```
+
+`DATABASE_URL` example for SQL Server:
+```env
+DATABASE_URL=mssql+pyodbc://sa:YourPassword@localhost:1433/clearancehub?driver=ODBC+Driver+18+for+SQL+Server&TrustServerCertificate=yes
 ```
 
 3. Run migrations:

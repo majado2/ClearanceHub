@@ -1,6 +1,6 @@
 # Backend PRD – Card & Access Management System
 
-**Stack:** FastAPI · MySQL · REST API
+**Stack:** FastAPI · SQL Server · REST API
 
 ---
 
@@ -62,7 +62,7 @@ Rules:
 
 ---
 
-## 5. Database Schema (MySQL) — Based on OPML
+## 5. Database Schema (SQL Server) — Based on OPML
 
 > هذا القسم مطابق لبنية قاعدة البيانات المذكورة في ملف الـ OPML الذي زوّدتني به. الإضافات الوحيدة عليه: **OTP + Tokens**.
 
@@ -599,4 +599,3 @@ app/
 ---
 
 **End of Document**
-
