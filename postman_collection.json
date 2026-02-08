@@ -1,0 +1,161 @@
+{
+  "info": {
+    "name": "ClearanceHub",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth - Request OTP",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"manager@company.com\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/auth/request-otp",
+          "host": ["{{base_url}}"],
+          "path": ["auth", "request-otp"]
+        }
+      }
+    },
+    {
+      "name": "Auth - Verify OTP",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"manager@company.com\",\n  \"otp\": \"123456\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/auth/verify-otp",
+          "host": ["{{base_url}}"],
+          "path": ["auth", "verify-otp"]
+        }
+      }
+    },
+    {
+      "name": "Create Card Request",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"requester_name\": \"Ahmed Ali\",\n  \"requester_employee_id\": \"EMP123\",\n  \"requester_department\": \"IT\",\n  \"card_type\": \"EMPLOYEE\",\n  \"job_title\": \"Software Engineer\",\n  \"photo_url\": \"https://example.com/photo.jpg\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/requests/card",
+          "host": ["{{base_url}}"],
+          "path": ["requests", "card"]
+        }
+      }
+    },
+    {
+      "name": "Create Access Request",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"requester_name\": \"Ahmed Ali\",\n  \"requester_employee_id\": \"EMP123\",\n  \"requester_department\": \"IT\",\n  \"access_area\": \"Server Room\",\n  \"access_level\": \"FULL\",\n  \"access_from\": \"2026-02-01\",\n  \"access_to\": \"2026-02-10\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/requests/access",
+          "host": ["{{base_url}}"],
+          "path": ["requests", "access"]
+        }
+      }
+    },
+    {
+      "name": "Get Request Details",
+      "request": {
+        "method": "GET",
+        "header": [{"key": "Authorization", "value": "Bearer {{access_token}}"}],
+        "url": {
+          "raw": "{{base_url}}/requests/1",
+          "host": ["{{base_url}}"],
+          "path": ["requests", "1"]
+        }
+      }
+    },
+    {
+      "name": "List Requests",
+      "request": {
+        "method": "GET",
+        "header": [{"key": "Authorization", "value": "Bearer {{access_token}}"}],
+        "url": {
+          "raw": "{{base_url}}/requests?type=&status=&from=&to=",
+          "host": ["{{base_url}}"],
+          "path": ["requests"],
+          "query": [
+            {"key": "type", "value": ""},
+            {"key": "status", "value": ""},
+            {"key": "from", "value": ""},
+            {"key": "to", "value": ""}
+          ]
+        }
+      }
+    },
+    {
+      "name": "Approve Request",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Authorization", "value": "Bearer {{access_token}}"}],
+        "url": {
+          "raw": "{{base_url}}/requests/1/approve",
+          "host": ["{{base_url}}"],
+          "path": ["requests", "1", "approve"]
+        }
+      }
+    },
+    {
+      "name": "Reject Request",
+      "request": {
+        "method": "POST",
+        "header": [
+          {"key": "Authorization", "value": "Bearer {{access_token}}"},
+          {"key": "Content-Type", "value": "application/json"}
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reason\": \"Invalid data\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/requests/1/reject",
+          "host": ["{{base_url}}"],
+          "path": ["requests", "1", "reject"]
+        }
+      }
+    },
+    {
+      "name": "Complete Request",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Authorization", "value": "Bearer {{access_token}}"}],
+        "url": {
+          "raw": "{{base_url}}/requests/1/complete",
+          "host": ["{{base_url}}"],
+          "path": ["requests", "1", "complete"]
+        }
+      }
+    },
+    {
+      "name": "Export Requests Excel",
+      "request": {
+        "method": "GET",
+        "header": [{"key": "Authorization", "value": "Bearer {{access_token}}"}],
+        "url": {
+          "raw": "{{base_url}}/reports/requests/excel",
+          "host": ["{{base_url}}"],
+          "path": ["reports", "requests", "excel"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {"key": "base_url", "value": "http://localhost:8000"},
+    {"key": "access_token", "value": ""}
+  ]
+}
